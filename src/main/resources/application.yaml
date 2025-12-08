@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: oauth2client
+  security:
+    oauth2:
+      client:
+        registration:
+          spring:
+            provider: spring
+            client-id: oidc-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            client-authentication-method: client_secret_basic
+            scope:
+              - openid
+              - user.read
+              - user.write
+        provider:
+          spring:
+            issuer-uri: http://localhost:9000
